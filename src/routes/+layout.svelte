@@ -29,13 +29,13 @@
 </script>
 
 <div>
-    <Header username={username} />
+    <Header username={username} userProfile={$user.user?.Image}/>
     <div class="main">
         {#if currentUrl!=='/login'}
              <Sidebar /> 
              <!-- conditionally rendering sidebar depending on the page the user is in -->
         {/if}
-        <div class={currentUrl!=='/login'? 'main-body':'body-content'}>
+        <div class={currentUrl !=='/login'? 'main-body':'body-content'}>
             <div class="main-body-content">
                 <slot />
             </div>
@@ -52,6 +52,9 @@
         margin:0;
         box-sizing: border-box;
         list-style: none;
+        scrollbar-color: gray black;
+        scrollbar-width:thin;
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
     }
     :global(a){
         color:inherit;
@@ -69,8 +72,6 @@
         background-color: #1E1E1E;
         height:calc(100vh - 6rem);
         overflow-y: scroll;
-        padding:0 2rem;
-        padding-top:2rem;
         color:white;
     }
 </style>

@@ -11,7 +11,6 @@
         <p class="tagline">Enjoy the music you love with no inturruptions...</p>
         <div class="btn-container">
             <Button content='Login' variant='filled'  id='login' path='/api/auth/login' />
-            <Button content='Signup' variant='outline' {handleClick} id='signup' />
         </div>
     </div>
     <div class="image-container"></div>

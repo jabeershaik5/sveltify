@@ -21,13 +21,12 @@
 
 <div class="sidebar">
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/search">Search</a></li>
-        <li>Playlist</li>
-        <li>Albums</li>
+        <li><a href="/" class='sidebar-ele'>Home</a></li>
+        <li><a href="/search" class='sidebar-ele'>Search</a></li>
+        <li><a href="/playlists" class='sidebar-ele'>Playlists</a></li>
         <li>
             <form action="/api/auth/logout" method="POST" on:submit|preventDefault={logout}>
-                <button type="submit">Logout</button>
+                <button type="submit" class='logout-btn'>Logout</button>
             </form>
         </li>
     </ul>
@@ -36,7 +35,7 @@
 <style>
  .sidebar{
         height:calc(100vh - 6rem);
-        background-color: #1E1E1E;
+        background-color: black;
         width:20rem;
         max-width:20rem;
         position: absolute;
@@ -46,19 +45,41 @@
         padding-left:1rem;
     } 
     .sidebar ul{
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         margin-top: 2rem;
         width:100%;
     }
     .sidebar ul li{
         width:100%;
         height:4rem;
-        display: flex;
-        align-items: center;
         padding:0 1rem;
         cursor: pointer;
     }
     .sidebar ul li:hover{
-        background-color: #373737;
+        background-color: #1d1d1d;
+    }
+    .sidebar ul > li:last-child:hover{
+        background-color: black;
+    }
+    .logout-btn{
+        margin-top:2rem;
+        color:white;
+        background-color: transparent;
+        border-radius:20px;
+        border:1px solid white;
+        padding:0.5rem 1rem;
+        transition: border 0.2s ease, color 0.2s ease;
+        cursor: pointer;
+    }
+    .logout-btn:hover{
+        color:rgb(223, 79, 18);;
+        border:1px solid rgb(223, 79, 18);
+
+    }
+    .sidebar-ele{
+        width:100%;
+        height:100%;
+        display: flex;
+        align-items: center;
     }
 </style>

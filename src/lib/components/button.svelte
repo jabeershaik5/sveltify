@@ -19,6 +19,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border:2px solid transparent;
+        transition: background-color 0.3s ease;
+    }
+    .button:hover{
+        border:2px solid rgb(223, 79, 18);
+        background-color: transparent;
     }
     .btn-filled{
         background-color:rgb(223, 79, 18);

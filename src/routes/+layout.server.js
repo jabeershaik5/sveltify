@@ -1,24 +1,26 @@
-import { reFetch } from '$lib/helpers/fetcher.js';
 import { redirect, error } from '@sveltejs/kit';
 
-export const load = async({cookies, fetch: _fetcher,url})=>{
+export const load = async({cookies, fetch,url})=>{
     const accessToken = cookies.get('access_token');
     const refreshToken = cookies.get('refresh_token');
 
-    const fetch = (path,options) => reFetch(_fetcher,path,options);
+    const headers = {
+        headers: {Authorization: `Bearer ${accessToken}`
+    }}; 
     //check if access token is availavle. if not return user as null.
     //if there is an access token then send a fetch request to the api for user data.
     if(!accessToken){
         return {user: null}
     }
- 
+    
     try{
         //fetching user profile data by sending a fetch request to the /me url of spotify.
         const profileRes = await fetch('https://api.spotify.com/v1/me', {
             headers:{
                 Authorization: `Bearer ${accessToken}`
             }
-        });
+        }
+        );
         //check if api sends a 401 error and there is a refresh token available
         //if yes then send a request to outr server api to get a new access token with refresh token.
         if(profileRes.status === 401 && refreshToken){

@@ -6,7 +6,6 @@ export const load = async({ data, url })=>{
 
     //extract the user data from the data returned by the server load function.
     const {user} = data || {};
-
     //redirect user from accessing unauthorized routes.
     if(!user && url.pathname !=='/login'){
         throw redirect(307, '/login');
