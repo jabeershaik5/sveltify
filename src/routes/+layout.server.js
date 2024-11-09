@@ -1,6 +1,7 @@
 import { redirect, error } from '@sveltejs/kit';
 
-export const load = async({cookies, fetch,url})=>{
+export const load = async({cookies, fetch,url}) =>{
+
     const accessToken = cookies.get('access_token');
     const refreshToken = cookies.get('refresh_token');
 
@@ -28,12 +29,14 @@ export const load = async({cookies, fetch,url})=>{
             const response = await fetch('/api/auth/refreshToken');
             if(response.ok){ 
                 throw redirect(307, url.pathname)
-                //if response is ok then redirect the user to the original url that they were trying to visit.
+                //if response is ok then redirect the user to the original url that they were trying 
+                //to visit.
             }
         }
         if(profileRes.ok){
             const profile = await profileRes.json();
-            return {user: profile} //return user data to be access in the client load function in +layout.js
+            return {user: profile} //return user data to be access in the client load function 
+            //in +layout.js
         }
         
     }catch(err){

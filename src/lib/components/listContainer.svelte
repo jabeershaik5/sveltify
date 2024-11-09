@@ -4,7 +4,10 @@
     export let title='';
 </script>
 <div class=list-wrapper>
-    <h1 class="list-title">{title || `${items[0].album_type.toUpperCase()}S`}</h1>
+    <h1 class="list-title">{
+        title || 
+        `${items[0].album_type ? `${items[0].album_type.toUpperCase()}S`:'Your Playlists'}`}
+    </h1>
     <div class="list">
         {#if items.length>0}
             {#each items as item }

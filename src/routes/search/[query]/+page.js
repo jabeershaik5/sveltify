@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit'
 
-export const load = async({fetch, url, params}) =>{
+export const load = async({fetch, params}) =>{
 
     const query = params.query;
     const searchParams = new URLSearchParams({

@@ -1,6 +1,6 @@
 <script>
 	import { invalidateAll } from "$app/navigation";
-	import Button from "./button.svelte";
+    import '@fortawesome/fontawesome-free/css/all.css';
 
     //function to logout the user when js is turnd on. 
     //after successful request invoke invalidateAll func to delete the client session data and 
@@ -21,9 +21,26 @@
 
 <div class="sidebar">
     <ul>
-        <li><a href="/" class='sidebar-ele'>Home</a></li>
-        <li><a href="/search" class='sidebar-ele'>Search</a></li>
-        <li><a href="/playlists" class='sidebar-ele'>Playlists</a></li>
+        <li>
+            <a href="/" class='sidebar-ele'>Home 
+                <i class="fas fa-home" style="font-size: 16px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="/search" class='sidebar-ele'>Search 
+                <i class="fas fa-search" style="font-size: 16px;"></i>
+            </a>
+        </li>
+        <li>
+            <a href="/playlists" class='sidebar-ele'>Playlists  
+                <i class="fas fa-music"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" class='sidebar-ele'>Profile  
+                <i class="fas fa-user"></i>
+            </a>
+        </li>
         <li>
             <form action="/api/auth/logout" method="POST" on:submit|preventDefault={logout}>
                 <button type="submit" class='logout-btn'>Logout</button>
@@ -81,5 +98,8 @@
         height:100%;
         display: flex;
         align-items: center;
+    }
+    .fas{
+        margin-left: 1rem;
     }
 </style>

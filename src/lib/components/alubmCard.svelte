@@ -1,16 +1,24 @@
 <script>
+	import { goto } from "$app/navigation";
+
     export let item= {};
     $:albumId = item.id;
 
+    $:type = item.type ? item.type : '';
+
     let isPressed = false;
 
-    const handleFetch = async()=>{
-        
-
-        // const response = await fetch(`/api/data/playlists/${albumId}/tracks`);
+    const handleClick = () =>{
+        if(type == 'playlist'){
+            goto(`/playlists/${albumId}`);
+            return
+        }
+        goto(`/album/${albumId}`);
     }
     const handleKeyDown = event =>{
+
         isPressed = !isPressed;
+
         if (event.key === 'Enter' || event.key === ' ') {
             handleClick();
         }
@@ -19,6 +27,7 @@
 
 <div class="album-card"  
     on:keydown={handleKeyDown}
+    on:click={handleClick}
     role='button'
     aria-pressed={isPressed}
     tabindex="0"
@@ -44,9 +53,10 @@
         border-radius:5px;
         overflow: hidden;
         background-color: rgb(21, 21, 21);
+        cursor: pointer;
     }
     .image-wrapper{
-        height:60%;
+        min-height:60%;
         width:100%;
         background-color: blanchedalmond;
         overflow:hidden;
@@ -59,6 +69,7 @@
     .content-wrapper{
         height:40%;
         width:100%;
+        padding:0.5rem;
     }
     .album-name{
         font-size: 1.5rem;

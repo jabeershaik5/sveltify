@@ -1,30 +1,37 @@
 <script>
+    import '@fortawesome/fontawesome-free/css/all.css';
     import SearchForm from "./searchForm.svelte";
 	import { user } from "$lib/stores/user.js";
     import { page } from "$app/stores";
-
+    
     export let username;
     export let userProfile;
 
     $:currentUrl = $page.url.pathname;
-//exporting the username as props. parent component will pass the value to be used here.
-//this specific prop is, us setting the fethced user on the store then using that 
-//store value not the fetched data.
+    //exporting the username as props. parent component will pass the value to be used here.
+    //this specific prop is, us setting the fethced user on the store then using that 
+    //store value not the fetched data.``
 </script>
 
 <nav>
     <div class="logo">
         Sveltify
-        {#if currentUrl==='/search'}
+        {#if currentUrl==='/search' || currentUrl.startsWith('/search')}
                 <SearchForm />
     {/if}
     </div>
     
     {#if $user.user}
         <div class="profile">
-            <div class="profile-logo">
-                <img src={userProfile? userProfile:''} alt="" />
-            </div>
+            
+            {#if userProfile}
+                <div class="profile-logo">
+                    <img src={userProfile} alt="" />
+                </div>
+            {:else}
+                <i class="fas fa-user" style="font-size: 16px;"></i>
+            {/if}
+            
             <div class='username'>{username}</div>
         </div>
     {/if}
@@ -72,5 +79,8 @@
     }
     .username{
         user-select: none;
+    }
+    .fas{
+        margin-left:1rem;
     }
 </style>

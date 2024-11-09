@@ -1,10 +1,15 @@
 <script>
+	import { goto } from "$app/navigation";
+
     export let category={};
+
+    $:catId = category.id;
 
     let isPressed = false;
 
     const handleClick = () =>{
-
+        goto(`/search/category/${catId}`);
+        
     }
     const handlePress = event =>{
         isPressed = !isPressed
@@ -19,6 +24,7 @@
     role='button'
     aria-pressed={isPressed}
     on:keypress={handlePress}
+    on:click={handleClick}
     tabindex='0'
 >
     <img src={category?.icons[0].url} alt="" class=category-image />
