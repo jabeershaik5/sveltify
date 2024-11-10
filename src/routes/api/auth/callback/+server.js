@@ -17,7 +17,7 @@ export const GET = async({url, fetch, cookies})=>{
         },
         body: new URLSearchParams({
             code:code ||'',
-            redirect_uri: 'https://sveltify-one.vercel.app/login',
+            redirect_uri: REDIRECT_URI,
             grant_type:'authorization_code'
         })
     });

@@ -23,7 +23,7 @@ export const GET = ()=>{
             response_type:'code',
             client_id:CLIENT_ID,
             scope,
-            redirect_uri:'https://sveltify-one.vercel.app/login',
+            redirect_uri:REDIRECT_URI,
             state
         })}`
     );
