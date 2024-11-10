@@ -1,4 +1,4 @@
-import { CLIENT_ID } from '$env/static/private';
+import { CLIENT_ID, REDIRECT_URI } from '$env/static/private';
 import { redirect } from '@sveltejs/kit'
 
 export const GET = ()=>{
@@ -23,7 +23,7 @@ export const GET = ()=>{
             response_type:'code',
             client_id:CLIENT_ID,
             scope,
-            redirect_uri:'http://localhost:5173/api/auth/callback',
+            redirect_uri:REDIRECT_URI,
             state
         })}`
     );

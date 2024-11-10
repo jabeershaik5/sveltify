@@ -1,4 +1,4 @@
-import { CLIENT_ID, CLIENT_SECRET, Path } from '$env/static/private';
+import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '$env/static/private';
 import { error, redirect } from '@sveltejs/kit';
 
 export const GET = async({url, fetch, cookies})=>{
@@ -17,7 +17,7 @@ export const GET = async({url, fetch, cookies})=>{
         },
         body: new URLSearchParams({
             code:code ||'',
-            redirect_uri: 'http://localhost:5173/api/auth/callback',
+            redirect_uri: REDIRECT_URI,
             grant_type:'authorization_code'
         })
     });
